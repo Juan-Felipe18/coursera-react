@@ -7,6 +7,7 @@ import {
   CardBody,
   CardTitle,
 } from "reactstrap";
+import DishDetail from "./ DishdetailComponent";
 
 export default function MenuComponent(props) {
   const { dishes } = props;
@@ -19,15 +20,7 @@ export default function MenuComponent(props) {
 
   const renderDish = function (dish) {
     if (dish != null) {
-      return (
-        <Card>
-          <CardImg width="100px" src={dish.image} alt={dish.name} />
-          <CardBody>
-            <CardTitle>{dish.name}</CardTitle>
-            <CardText>{dish.description}</CardText>
-          </CardBody>
-        </Card>
-      );
+      return <DishDetail dishDetails={dish} />;
     } else {
       return <div></div>;
     }
@@ -49,7 +42,7 @@ export default function MenuComponent(props) {
   return (
     <div className="container">
       <div className="row">{menu}</div>
-      <div className="row">{renderDish(selectedDish)}</div>
+      <div>{renderDish(selectedDish)}</div>
     </div>
   );
 }
